@@ -1,0 +1,100 @@
+#include <iostream>
+
+using namespace std;
+string distanceMedalist();
+string timeMedalist();
+double getave();
+
+int main() {
+// calls the distancemedalist function from below so I can get the person who won
+    string skiJumpWinner = distanceMedalist();
+    cout << "The Ski Jump Champion is: " << skiJumpWinner << endl;
+
+    // calls the timemeadlist function below so I can get the person who won
+    string sprintWinner = timeMedalist();
+    cout << "The Ski Jump Champion is: " << sprintWinner << endl;
+
+    double avg = getave();
+    cout << "The average of the three values is: " << avg << endl;
+
+
+    return 0;
+
+}
+
+
+// This function asks the user for the names of two ski jump competitors
+// and the distance each competitor jumped. It compares the distances
+// and returns the name of the competitor who jumped farther.
+// If both competitors jump the same distance, it returns "TIE".
+string distanceMedalist() {
+    string name1,name2;
+    double distance1, distance2;
+
+    cout << "------ Ski Jump Distance -----" << endl; // made this so I know what function I am on
+     cout << "What is the name of your first competer?: " << endl;
+    cin >> name1;
+    cout << "How far did they go?: " << endl;
+    cin >> distance1;
+
+    cout << "What is the name of your second competeor?: " << endl;
+    cin >> name2;
+    cout << "How far did they go?: " << endl;
+    cin >> distance2;
+// if statments reutrn the name from below and decides who won and who lost
+    if (distance1 > distance2) {
+        return name1;
+
+    } else if (distance1 < distance2) {
+        return name2;
+    } else if (distance1 == distance2) {
+        return "TIE";
+    }
+} // end of function distanceMedalist
+
+
+
+// This function asks the user for the names of two speed skating competitors
+// and the time each competitor took to complete a 100m race. It compares
+// the times and returns the name of the competitor with the fastest time.
+string timeMedalist() {
+    string name1,name2;
+    double time1, time2;
+    cout << "----Speed Skating=----" << endl; // Made this so I know the title of what one is happening first
+    cout << "What is the name of your first competer?: " << endl;
+    cin >> name1;
+    cout << "How long did they take to go 100m?: " << endl;
+    cin >> time1;
+
+    cout << "What is the name of your second competeor?: " << endl;
+    cin >> name2;
+    cout << "How long did they take to go 100m?: " << endl;
+    cin >> time2;
+
+    // these if statments return the name so I can use them up in the main function and figure out the rest.
+    if (time1 < time2) {
+        return name1;
+    } else if (time2 > time1) {
+        return name1;
+    } else if (time1 > time2) {
+        return name2;
+
+    }
+
+} // end of function timeMedalist
+
+// This function prompts the user to enter three numbers.
+// It then calculates and returns the average of those numbers.
+
+double getave() {
+    double v1, v2, v3;
+
+    cout << "-----Average Calc-----" << endl; // Made this so I know the title of what one is happening
+    cout << "Enter value 1: ";
+    cin >> v1;
+    cout << "Enter value 2: ";
+    cin >> v2;
+    cout << "Enter value 3: ";
+    cin >> v3;
+    return (v1 + v2 + v3) / 3.0; // This is how I get the average 
+} // end of function getave
