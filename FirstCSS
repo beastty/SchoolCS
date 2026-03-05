@@ -1,0 +1,263 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Starts declaring all the functions from the bottom of the code
+void number();
+
+void triangle();
+
+void sum();
+
+void repeat();
+
+void fuzz();
+
+void silly();
+
+void sentence();
+
+// End of declaring functions
+
+
+// Start of function main
+int main() {
+    int algro;
+
+    // asks and gets the user input for what algro they would like to test
+
+    cout << "1. IsEqual or isSmaller numbers" << endl;
+    cout << "2. Triangle Numbers" << endl;
+    cout << "3. Get the sum and average of a number" << endl;
+    cout << "4. Get 10 numbers to rpeat" << endl;
+    cout << "5. FuzzBuzz Algro" << endl;
+    cout << "6. Say a silly statment" << endl;
+    cout << "7. Combine 2 setences" << endl;
+    cout << "Please select an algorithm you want to test (1-7): " << endl;;
+    cin >> algro;
+    cin.clear();
+    fflush(stdin);
+    // algro switcher( swiches what function to test )
+    switch (algro) {
+        case 1: {
+            // start of case 1
+
+            // calls the function number
+            number();
+            break;
+        } // end of case one
+
+        case 2: {
+            // start of case 2
+
+            // calls the function triangle
+            triangle();
+            break;
+        } // end of case 2
+
+
+        case 3: {
+            // start of case 3
+            sum(); // calls the function sum
+        } // end of case 3
+        break;
+
+        case 4: {
+            // start of case 4
+            repeat(); // calls the function repeat
+        } // end of case 4
+        break;
+
+        case 5: {
+            // start of case 5
+            fuzz; // calls the function fuzz
+        } // end of case 5
+        break;
+
+        case 6: {
+            // start of case 6
+            silly(); // calls the function silly
+        } // end of case 6
+
+        break;
+
+        case 7: {
+            // start of case 7
+            sentence(); // calls function sentence
+        } // end of case 7
+        break;
+        // default if theey select something not in the switch statements to make them re select
+        default:
+            cout << "Invalid selection! Please choose 1-7." << endl;
+            break;
+    } // THIS bracket closes the switch
+
+
+    return 0;
+} // End of function main
+
+// This function asks the users for there first and second number
+// Then is compares the numbers and decides is one is bigger or
+// one is smaller or if they tied and then return saying which is bigger or equal
+// Then outputs it into console
+// Start of the  number function.
+void number() {
+    int a, b;
+    // asks the users for their first number and second number then it sets the int a / b var to the number the user sets
+    cout << "Please enter your first number: " << endl;
+    cin >> a;
+    cout << "Please enter your second number: " << endl;
+    cin >> b;
+
+
+    bool isEqual = (a == b);
+    bool isSmaller = (a < b);
+
+    if (isEqual) {
+        // if the 2 numbers are equal
+        cout << "The numbers are equal to each other!" << endl;
+    } else if (isSmaller) {
+        // if the first number is smaller then the second number
+        cout << "Your first number is smaller!" << endl;
+    } else {
+        // if the first number is larger then the second number
+        cout << "The first number is larger!" << endl;
+    }
+} // end of function number
+// This function asks a user to input a triangular number then makes a triangle with
+// "*" then outputs in console
+void triangle() {
+    // start of function triangle
+    int count;
+    // asks the user how many triangler numbers they want then the input is what the console sets it to
+    cout << "Enter how many triangular numbers: ";
+    cin >> count;
+
+    // init var
+    int n = 1;
+    // make a while loop while the count var the user inputs is greater then one
+    while (n <= count) {
+        // formula for triangle numbers
+        int triangleNum = n * (n + 1) / 2;
+
+        // tell the user how many triagnele there is
+        cout << "\nTriangle #" << n << " is: " << triangleNum << endl;
+
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                cout << "* ";
+            }
+            cout << endl;
+        }
+        n++;
+    }
+} // end of function triangle
+
+// This function asks the user to input 10 diffrent numbers into console
+// When the forloop hits 10 it will calctualute the average the sum
+// THen it will export the sum anverage number to console for the user to see
+void sum() {
+    // start of function sum
+    int num;
+    int sum = 0;
+    float ave;
+
+    cout << "Enter your first numbers: ";
+    // its a for loop to make it so until the user has entered 10 numbers i will go up until its 10
+
+    for (int i = 0; i < 10; i++) {
+        cin >> num; // sets the num var to what the user says
+        sum += num; // sets the sum is equal to the addition of the numbers
+
+        ave = sum / 10.00; // formula to find average
+    }
+    cout << "The sum of all your numbers is: " << sum << endl; // get the sum of all the numbers
+    cout << "The average number is: " << ave << endl; // get the average of the numbers
+} // end of function sum
+
+// This function asks the user to put a number into console
+// Then that number repeats that number amount of times
+void repeat() {
+    // start of function repeat
+    int num;
+    // asks the user to pick a number then the console puts the var num to that
+    cout << "Please pick a number to repeat: " << endl;
+    cin >> num;
+
+    for (int i = 1; i <= num; i++) {
+    }
+    cout << num;
+} // end of function repeat
+
+// This function asks the user to pick a number
+// If the number is dvidible by 3 and 5 it will output FizzBuzz
+// if its just divisible by 3 it will output fizz
+// if its just divisible by 5 is will output buzz all to console
+void fuzz() {
+    // start of function fuzz
+    //  initalize the int var and make it equal to num then set the user input to what the var is
+    int num;
+    cout << "Please pick a number: " << endl;
+    cin >> num;
+
+    for (int i = 1; i <= num; i++) {
+        // checks if its a multiple of 3 and 5 at the same time then if it does console says FizzBuzz
+        if (i % 3 == 0 && i % 5 == 0) {
+            cout << "FizzBuzz";
+            // checks if its a multiple of 3 then if it is it says "Fizz" to console
+        } else if (i % 3 == 0) {
+            cout << "Fizz";
+            // checks if its a multiple of 5 then if it is it says "Buzz" to console
+        } else if (i % 5 == 0) {
+            cout << "Buzz";
+            // if its none is just excustes a space to console
+        } else {
+            cout << i << " ";
+        }
+    }
+} // end of function "fuzz"
+
+// This function asks the user a yes or no question
+// if the user says yes it will output a certain message to console
+// if the user says no it will output a diffrent message to console
+void silly() {
+    // start of function silly
+    string response;
+    // asks the user a yes or no question
+    cout <<
+            "Do you love fixing error's in your 10 thousand line code without any real explanation of the error? (yes/no): ";
+    // getline gets the cout line then cin defects if its a yes or no then sets into a var reponse
+    getline(cin, response);
+
+    // if the answer was yes to that question say this
+    if (response.compare("yes") == 0) {
+        cout << "You are insane or just really love fixing code that breaks!" << endl;
+
+        // if the answer was no to that say this
+    } else if (response.compare("no") == 0) {
+        cout << "Honestly who does like fixing code?" << endl;
+        // if they didnt select a yes or no answer
+    } else {
+        cout << "Please say yes or no to the question :( " << endl;
+    }
+} // end of function silly
+
+
+// This function asks the user to input 2 diffrence sentences
+// then it combines those sentences into one
+void sentence() {
+    // start of function sentence
+    // initilize var s1,s2 then asks for the first sentence
+    string s1, s2;
+    cout << "\n Enter first sentence: ";
+
+    getline(cin, s1); // gets the first sentence
+    // gets the users sencond sentence and asks for the second sentece
+    cout << "Enter second sentence: ";
+    // gets the sentence and states it as a cin statment
+    getline(cin, s2);
+    // combine the 2 strings
+    string combined = s1 + " " + s2;
+    cout << "\m Joined sentences: " << combined << endl;
+} // end of cuntion sentence
