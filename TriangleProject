@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 bool isTriangle(int x, int y, int z);
+void triangleType(int x, int y, int z);
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
     int x, y, z;
@@ -11,9 +12,12 @@ int main() {
     cout << "Please enter your third angle: " << endl;
     cin >> z;
 
-    bool isTri = isTriangle(x, y, z);
-    if (isTri) {
-        cout << "You have a proper 180 degrees triangle" << endl;
+
+    cout << "This triangle tester was written by Jesse. I did not use old code to help"
+
+    if (isTriangle(x, y, z)) {
+        cout << "You have a proper 180 degrees triangle. The type of triangle is: " << endl;
+        triangleType(x, y, z);
     } else {
         cout << "You do not have a proper 180 degree triangle" << endl;
     }
@@ -23,29 +27,23 @@ int main() {
 
 bool isTriangle(int x, int y, int z) {
 //  int x, y, z;
+    return (x + y + z == 180 && x > 0 && y > 0 && z > 0);
 
-    if (x + y + z == 180 && x > 0 && y > 0 && z > 0) {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 
 void triangleType(int x, int y, int z) {
-    bool isTri = isTriangle(x,y,z);
-    if (isTri) {
+    //bool isTri = isTriangle(x,y,z);
 
-        if (x == y && y == z && x + y + z == 180) {
+
+        if (x == y && y == z) {
             cout << "You have a Equilateral triangle" << endl;
 
-        } else if (x != + y != + z == 180) {
+        } else if (x != y && y != z && x != z ) {
             cout << "You have a Scalene triangle" << endl;
-        } else if (x == y || y == z && x + y + z == 180) {
+        } else {
             cout << "You have a Isosceles triangle" << endl;
-        }
-    } else {
-        cout << "You do not have a proper triangle" << endl;
+
     }
 
     }
