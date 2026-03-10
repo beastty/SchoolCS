@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+#include <random>
+#include <chrono>
+#include <ctime>
+#include <cstdlib>
+
+void random(int[]);
+
+int main() {
+    string userCode;
+
+    int code[3] = {0, 0, 0};
+    random(code);
+    cout << code[0];
+    return 0;
+}
+
+void random(int code[3]) {
+
+    srand(time(0));
+    code[0] = rand() % 10;
+    code[1] = rand() % 10;;
+}
