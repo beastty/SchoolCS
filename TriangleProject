@@ -4,29 +4,44 @@ bool isTriangle(int x, int y, int z);
 void triangleType(int x, int y, int z);
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
-    int x, y, z;
-    cout << "Please enter your first angle: " << endl;
-    cin >> x;
-    cout << "Please enter your second angle: " << endl;
-    cin >> y;
-    cout << "Please enter your third angle: " << endl;
-    cin >> z;
 
 
-    cout << "This triangle tester was written by Jesse. I did not use old code to help"
 
-    if (isTriangle(x, y, z)) {
-        cout << "You have a proper 180 degrees triangle. The type of triangle is: " << endl;
-        triangleType(x, y, z);
-    } else {
-        cout << "You do not have a proper 180 degree triangle" << endl;
+    cout << "Welcome to the Triangle Tester Program!" << endl;
+    cout << "This triangle was tester was written by Jesse. I did not use old code to write this." << endl;
+
+    while (true) {
+        int x, y, z;
+        cout << "Please enter your first angle: " << endl;
+        cin >> x;
+        cout << "Please enter your second angle: " << endl;
+        cin >> y;
+        cout << "Please enter your third angle: " << endl;
+        cin >> z;
+
+        if (isTriangle(x, y, z)) {
+            cout << "You have a proper 180 degrees triangle. The type of triangle is: " << endl;
+            triangleType(x, y, z);
+        } else {
+            cout << "You do not have a proper 180 degree triangle" << endl;
+        }
+        char again;
+        cout << "\nWould you like to test another triangle? (y/n): ";
+        cin >> again;
+
+        if (again != 'y' && again != 'Y') {
+            break;
+        }
     }
+
+
+
     return 0;
     // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }
 
 bool isTriangle(int x, int y, int z) {
-//  int x, y, z;
+    //  int x, y, z;
     return (x + y + z == 180 && x > 0 && y > 0 && z > 0);
 
 }
@@ -35,15 +50,17 @@ bool isTriangle(int x, int y, int z) {
 void triangleType(int x, int y, int z) {
     //bool isTri = isTriangle(x,y,z);
 
+    if (x == 90 || y == 90 || z == 90) {
+        cout << "This is a Right triangle" << endl;
+    }
+    if (x == y && y == z) {
+        cout << "You have a Equilateral triangle" << endl;
 
-        if (x == y && y == z) {
-            cout << "You have a Equilateral triangle" << endl;
-
-        } else if (x != y && y != z && x != z ) {
-            cout << "You have a Scalene triangle" << endl;
-        } else {
-            cout << "You have a Isosceles triangle" << endl;
+    } else if (x != y && y != z && x != z ) {
+        cout << "You have a Scalene triangle" << endl;
+    } else {
+        cout << "You have a Isosceles triangle" << endl;
 
     }
 
-    }
+}
