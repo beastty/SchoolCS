@@ -5,14 +5,34 @@ using namespace std;
 #include <ctime>
 #include <cstdlib>
 
+string yellowCheck(int, int, int);
 void random(int[]);
 
 int main() {
     string userCode;
+    int userint1;
+    int userint2;
+    int userint3;
 
     int code[3] = {0, 0, 0};
     random(code);
-    cout << code[0];
+    cout << code[0] << code[1] << code[2]; // for debugging
+
+    cout << "Please enter your three numbers" << endl;
+    cin >> userint1 >> userint2 >> userint3;
+
+
+
+    if (userint1 == code[0] && userint2 == code[1] && userint3 == code[2]) {
+        cout << "green, green, green" << endl;
+    } else {
+        cout << yellowCheck(userint1, code[1], code[2]) << endl;
+        cout << yellowCheck(userint2, code[0], code[2] ) << endl;
+        cout << yellowCheck(userint3, code[0], code[1]) << endl;
+    }
+
+
+
     return 0;
 }
 
@@ -20,5 +40,31 @@ void random(int code[3]) {
 
     srand(time(0));
     code[0] = rand() % 10;
-    code[1] = rand() % 10;;
+    code[1] = rand() % 10;
+    code[2] = rand() % 10;
 }
+
+
+string greenCheck(int userint, int userint1) {
+    if (userint == userint) {
+        return "green";
+    }
+    return "";
+}
+
+string yellowCheck(int userint, int otherint1, int otherint2) {
+
+    if (userint == otherint1 || userint == otherint2) {
+        return "yellow";
+    }
+    return " ";
+
+}
+
+string redCheck(int userint, int otherint1, int otherint2) {
+    if (userint != otherint1 && userint != otherint2 && otherint1 != otherint2) {
+        return "red";
+    }
+    return " ";
+}
+
