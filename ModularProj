@@ -6,31 +6,54 @@ using namespace std;
 #include <cstdlib>
 
 string yellowCheck(int, int, int);
+string redCheck(int, int, int);
+string greenCheck(int, int);
 void random(int[]);
+
 
 int main() {
     string userCode;
     int userint1;
     int userint2;
     int userint3;
-
+    int userint;
     int code[3] = {0, 0, 0};
+    char play;
     random(code);
-    cout << code[0] << code[1] << code[2]; // for debugging
+    cout << code[0] << code[1] << code[2];
+    int attempt = 0;
 
-    cout << "Please enter your three numbers" << endl;
-    cin >> userint1 >> userint2 >> userint3;
+    while (attempt < 10) {
+        string result = "";
+
+        // for debugging
+
+        cout << "Please enter your three numbers" << endl;
+        cin >> userint1 >> userint2 >> userint3;
+
+        result += greenCheck(userint1, code[0]);
+        result += greenCheck(userint2, code[1]);
+        result += greenCheck(userint3, code[2]);
+
+        result += yellowCheck(userint1, code[1], code[2]);
+        result += yellowCheck(userint2, code[0], code[2]);
+        result += yellowCheck(userint3, code[0], code[1]);
 
 
+        if (result == "") {
+            result += "red";
+        }
 
-    if (userint1 == code[0] && userint2 == code[1] && userint3 == code[2]) {
-        cout << "green, green, green" << endl;
-    } else {
-        cout << yellowCheck(userint1, code[1], code[2]) << endl;
-        cout << yellowCheck(userint2, code[0], code[2] ) << endl;
-        cout << yellowCheck(userint3, code[0], code[1]) << endl;
+        cout << result;
+        attempt++;
+        if (userint1 == code[0] && userint2 == code[1] && userint3 == code[2]) {
+            cout << "You cracked the code! In: " << attempt << "attempts " << endl;
+            break;
+
+        }
+
+
     }
-
 
 
     return 0;
@@ -41,13 +64,20 @@ void random(int code[3]) {
     srand(time(0));
     code[0] = rand() % 10;
     code[1] = rand() % 10;
+    while (code[1] == code[0]) {
+        code[1] = rand() % 10;
+    }
     code[2] = rand() % 10;
+    while (code[2] == code[0] || code[2] == code[1]) {
+        code[2] = rand() % 10;
+    }
+
 }
 
 
 string greenCheck(int userint, int userint1) {
-    if (userint == userint) {
-        return "green";
+    if (userint == userint1) {
+        return "green ";
     }
     return "";
 }
@@ -55,9 +85,9 @@ string greenCheck(int userint, int userint1) {
 string yellowCheck(int userint, int otherint1, int otherint2) {
 
     if (userint == otherint1 || userint == otherint2) {
-        return "yellow";
+        return "yellow ";
     }
-    return " ";
+    return "";
 
 }
 
@@ -65,6 +95,6 @@ string redCheck(int userint, int otherint1, int otherint2) {
     if (userint != otherint1 && userint != otherint2 && otherint1 != otherint2) {
         return "red";
     }
-    return " ";
+    return "";
 }
 
