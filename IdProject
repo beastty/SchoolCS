@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+int main() {
+int idArray[20];
+int arrayCount = 0;
+    int id;
+    cout << "Please enter your Student ID number" << endl;
+    cin >> id;
+    
+    if (arrayCount < 20) {
+        idArray[arrayCount] = id;
+        arrayCount += 1;       
+    } else {
+        cout << "No more room for new ID's! Blame Jacob ngl"
+    }
+
+    
+    
+    
+    return 0;
+    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
+}
