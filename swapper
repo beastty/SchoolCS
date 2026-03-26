@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+#include <utility>
+
+void variableSwap(int &a, int &b);
+int factorial(int n, int &counter);
+int main() {
+    int a, b;
+    int counter = 0;
+    cout << "Please select your first number you would like to switch: ";
+    cin >> a;
+    cout << "Please select your second number you would like to switch: ";
+    cin >> b;
+    cout << "Your numbers before the switch are. A: " << a << " B: " << b << endl;
+    variableSwap(a, b);
+    cout << "Your numbers before the switch are. A: " << a << " B: " << b << endl;
+    cout << "Factorial: " << factorial(10, counter) << endl;
+    cout << "Your counter is at: " << counter << endl;
+}
+
+void variableSwap(int &a, int &b) {
+    int saveda = a;
+    a = b;
+    b = saveda;
+}
+
+int factorial(int n, int &counter) {
+    counter++;
+    if (n > 1) {
+        return n * factorial(n - 1, counter);
+    } else {
+        return 1;
+    }
+}
