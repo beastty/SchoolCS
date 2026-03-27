@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+void printMenu() {
+    cout << "Student ID Manager Menu" << endl;
+    cout << "1. Insert ID" << endl;
+    cout << "2. Search ID" << endl;
+    cout << "3. Replace ID" << endl;
+    cout << "4. Delete ID" << endl;
+    cout << "5. Display ID's" << endl;
+    cout << "6. Copy to Backup" << endl;
+    cout << "7. Compare with Backup" << endl;
+    cout << "8. Exit" << endl;
+}
+
+void pushID(int idArray[], int &arrayCount, int size);
+void display(int idArray[], int arrayCount);
+
+int main() {
+    int idArray[20];
+    int arrayCount = 0;
+    int id;
+    int selection;
+
+    printMenu();
+    cout << "What would you like to do with the ID?" << endl;
+    cin >> selection;
+
+    while (selection != 8) {
+        switch (selection) {
+            case 1: {
+                pushID(idArray, arrayCount, 20);
+            }
+                break;
+            case 2:
+                break;
+            case 5:
+                display(idArray, arrayCount);
+                break;
+            default:
+                cout << "INADFASDF" << endl;
+        }
+
+        printMenu();
+        cout << "What would you like to do with the ID?" << endl;
+        cin >> selection;
+
+    }
+
+
+
+    return 0;
+}
+
+void pushID(int idArray[],  int &arrayCount, int size) {
+    int id;
+
+    cout << "Please enter your student ID number" << endl;
+    cin >> id;
+
+        if (arrayCount < size) {
+            idArray[arrayCount] = id;
+            arrayCount += 1;
+            cout << "You have " << arrayCount << " Id saved" << endl;
+        } else {
+            cout << "No more room for new ID's!";
+        }
+
+}
+
+
+
+
+void linearSearch() {
+
+}
+
+void replaceID() {
+
+}
+
+void shiftID() {
+
+}
+
+void display(int idArray[], int arrayCount) {
+    for (int i = 0; i < arrayCount; i++) {
+        cout << idArray[i] << endl;
+    }
+}
+void deleteID() {
+    
+}
