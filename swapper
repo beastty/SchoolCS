@@ -2,31 +2,49 @@
 using namespace std;
 #include <utility>
 
+// defines and let me call the function that lets me switch the variables
 void variableSwap(int &a, int &b);
+
+// defines and let me call the function that will tell me the factorial of the numbers
 int factorial(int n, int &counter);
+
+// start of function main(_
 int main() {
+    // vars I switch
     int a, b;
+    // shows how much I want to count towards the factorial
     int counter = 0;
     cout << "Please select your first number you would like to switch: ";
     cin >> a;
     cout << "Please select your second number you would like to switch: ";
     cin >> b;
     cout << "Your numbers before the switch are. A: " << a << " B: " << b << endl;
+
+    // calls the function variableSwap and swaps the variables tp eachother
     variableSwap(a, b);
     cout << "Your numbers before the switch are. A: " << a << " B: " << b << endl;
+    // shows the factorial of the numbers
     cout << "Factorial: " << factorial(10, counter) << endl;
+    // shows what the counter is
     cout << "Your counter is at: " << counter << endl;
-}
+} // end of function main()
 
+// start of the function variableSwap that swaps my 2 variables
+// the & is for declaring
 void variableSwap(int &a, int &b) {
+// saves the old variable a so it will let them switch properly
     int saveda = a;
     a = b;
     b = saveda;
-}
+} // end of funtion variableSwap
 
+// starts of function factorial
+// expects a int var and the defined count variable
 int factorial(int n, int &counter) {
+    // counter goes up by 1 constantly
     counter++;
     if (n > 1) {
+        // this is the funciton that returns the factorial number
         return n * factorial(n - 1, counter);
     } else {
         return 1;
