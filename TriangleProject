@@ -1,15 +1,16 @@
 #include <iostream>
 using namespace std;
+// calls the 2 functions from below and still excepts 3 diffrent ints
 bool isTriangle(int x, int y, int z);
 void triangleType(int x, int y, int z);
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-int main() {
+int main() { // start of function main()
 
 
 
     cout << "Welcome to the Triangle Tester Program!" << endl;
     cout << "This triangle was tester was written by Jesse. I did not use old code to write this." << endl;
-
+ // while the program is ran true it loops thru this stuff and checks
     while (true) {
         int x, y, z;
         cout << "Please enter your first angle: " << endl;
@@ -19,12 +20,14 @@ int main() {
         cout << "Please enter your third angle: " << endl;
         cin >> z;
 
+        // if the triangles angles are all equal to 180 return the triangletype
         if (isTriangle(x, y, z)) {
             cout << "You have a proper 180 degrees triangle. The type of triangle is: " << endl;
             triangleType(x, y, z);
-        } else {
+        } else { // says you dont have a triangle
             cout << "You do not have a proper 180 degree triangle" << endl;
         }
+        // asks the user if they wanna play again 
         char again;
         cout << "\nWould you like to test another triangle? (y/n): ";
         cin >> again;
@@ -37,28 +40,31 @@ int main() {
 
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }
-
+// start of the function isTriangle. This function checks if the functions angle adds to the needed amount for the triangle to be a triangle.
+// expects 3 integers which would be counted as the angle.
 bool isTriangle(int x, int y, int z) {
-    //  int x, y, z;
+    // if the angles arre a triangle and the angles are greater then 0 and adds to 180 return
+
     return (x + y + z == 180 && x > 0 && y > 0 && z > 0);
 
-}
+} // end of function isTriangle
 
-
+// start of the function triangleType
+//  This function asks for 3 diffrent ints as angles thgen determines what type of triangle it is.
 void triangleType(int x, int y, int z) {
     //bool isTri = isTriangle(x,y,z);
-
+    // checks if one of the angles are equal to 90 degrees and if one of the angles are equal to 90 degrees output this is a right =triangle to console
     if (x == 90 || y == 90 || z == 90) {
         cout << "This is a Right triangle" << endl;
     }
+    // checks if all the angles are equal to eachother and if they are its a equalitartel triangle
     if (x == y && y == z) {
         cout << "You have a Equilateral triangle" << endl;
-
-    } else if (x != y && y != z && x != z ) {
+    } else if (x != y && y != z && x != z ) { // checks to make sure no angle is equal to eachother and if no angle equal's eachother its a Scalene triangle
         cout << "You have a Scalene triangle" << endl;
     } else {
+        // if one of the angles are eequal to eachother its a isoseles triangle
         cout << "You have a Isosceles triangle" << endl;
 
     }
