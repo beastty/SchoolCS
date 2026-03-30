@@ -1,53 +1,67 @@
 #include <iostream>
 using namespace std;
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+// start of function main()
 int main() {
-int sum = 0;
-float ave;
-int min = 0;
-int max = 0;
 
+    // declare all the vars I need
+    int sum = 0;
+    float ave;
+    int min = 0;
+    int max = 0;
+
+    // makes the array called code which takes 10 numbers
     int code[10];
 
-    //cout << "Please enter 10 numbers:";
 
 
+ // make a for loop for the user to enter their numbers until they hit 10 numbers
+    // then those numbers are saved into the array
     for (int i = 0; i < 10; i++) {
 
-        cout << "Enter Number " << i+1 <<": ";
+        cout << "Enter Number " << i+1 <<": ";  // the i+1 is for the index
+    // saves the users input into the array
         cin >> code[i];
     }
-
+  // data values are for the index and the total numbers  for each indexx
     cout << "Data Values: " << endl;
+    // makes a for loop that shows the index# and the number that is inside of the index inside of the arary
     for (int i =0; i <10; i++) {
         cout << "Index " << i << ": " << code[i] << endl;
     }
 
+    // outputs the title array Calculation
     cout << "Array Calculation" << endl;
 
 
+    // loops through all the array then adds up all the indexes
     for (int i=0; i<10; i++) {
         sum += code[i];
 
     }
-
+    // prints the sum to console
     cout << "Total: " << sum << endl;
 
+    // make the sum a float then divides it by 10
     ave = (float)sum/10;
+    // prints the average
     cout << "Average: " << ave << endl;
 
+    // makes the min = to a code[0] array
     min = code[0];
+    // loops through all 10 indexes in the array code[i] and checks if the number is
+    // less then the other numbers then calculates the min value
     for (int i=1; i<10; i++) {
         if (code[i] < min) {
             min = code[i];
 
-
+            // does the smae thing but opposite so it calculates the maximum
         } else if (code[i] > max) {
             max = code[i];
         }
 
     }
+    // outputs min and max value in console
     cout << "Your minimum value is: " << min << endl;
     cout << "Your maximum value is: " << max << endl;
     return 0;
