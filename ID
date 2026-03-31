@@ -15,6 +15,9 @@ void printMenu() {
 
 void pushID(int idArray[], int &arrayCount, int size);
 void display(int idArray[], int arrayCount);
+int linearSearch(int idArray[], int arrayCount, int id);
+void deleteID(int idArray[], int &arrayCount);
+void replaceID(int idArray[], int &arrayCount);
 
 int main() {
     int idArray[20];
@@ -33,6 +36,13 @@ int main() {
             }
                 break;
             case 2:
+                
+                break;
+            case 3:
+                replaceID(idArray, arrayCount);
+                break;
+            case 4:
+                deleteID(idArray, arrayCount);
                 break;
             case 5:
                 display(idArray, arrayCount);
@@ -71,23 +81,77 @@ void pushID(int idArray[],  int &arrayCount, int size) {
 
 
 
-void linearSearch() {
+int linearSearch(int idArray[], int arrayCount, int id) {
 
+    for (int i = 0; i < arrayCount; i++) {
+        if (idArray[i] == id) {
+            return i;
+        }
+
+    } return -1;
 }
 
-void replaceID() {
 
-}
 
-void shiftID() {
+
+void replaceID(int idArray[], int &arrayCount) {
+    int id;
+    int index;
+    int replaced;
+    cout << "What Id what you like to replace" << endl;
+    cin >> id;
+
+    if (index == -1 || arrayCount == 0) {
+        cout << "Error no Id found" << endl;
+        return;
+    }
+
+    cout << "What would you like to replace it with: " << endl;
+    cin >> replaced;
+
+
+
+    index = linearSearch(idArray, arrayCount, id);
+        idArray[index] = replaced;
+
 
 }
 
 void display(int idArray[], int arrayCount) {
+    if (arrayCount == 0) {
+        cout << "No Id's found in the arrays!" << endl;
+    }
     for (int i = 0; i < arrayCount; i++) {
         cout << idArray[i] << endl;
     }
 }
-void deleteID() {
-    
+
+
+void deleteID(int idArray[], int &arrayCount) {
+    int id;
+    int index;
+    cout << "What Id what you like to delete: " << endl;
+    cin >> id;
+    index = linearSearch(idArray, arrayCount, id );
+
+    if (index == -1) {
+        cout << "Error: No Id Found." << endl;
+        return;
+    }
+    for (int i = index; i < arrayCount - 1; i++) {
+        idArray[i] = idArray[i+1];
+
+    }
+    arrayCount--;
 }
+
+void searchID(int idArray[], int arrayCount, int id) {
+    for (int i = 0; i < arrayCount; i++) {
+        if (idArray[i] == id) {
+            return i;
+        }
+    }
+}
+return -1;
+
+
