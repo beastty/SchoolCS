@@ -4,37 +4,45 @@ using namespace std;
 #include <chrono>
 #include <ctime>
 #include <cstdlib>
-
+// calls my check functions from below and each expect int vars from the users
 string yellowCheck(int, int, int);
 string redCheck(int, int, int);
 string greenCheck(int, int);
+// calls the void function random which expects a int array to be called
 void random(int[]);
 
 
 int main() {
+    // initilize all my vars
     string userCode;
     int userint1;
     int userint2;
     int userint3;
     int userint;
+    // intilize my code[] array which expects 3 numbers
     int code[3] = {0, 0, 0};
     char play;
+    // gets the random number and puts it in the array called code
     random(code);
+    // gets the users 3 input and put it into the array as 3 numbers
     cout << code[0] << code[1] << code[2];
+
+    // made an attempt variable to trak the amount of attempts the user have tried to guess the #
     int attempt = 0;
 
+    // while the user has made less then 10 attempts it loops through the game until the user has ether guessed the number or quit because they have more then 10 attempts
     while (attempt < 10) {
         string result = "";
 
-        // for debugging
-
+        // asks the user for three numbers then sets the vars to the user ints
         cout << "Please enter your three numbers" << endl;
         cin >> userint1 >> userint2 >> userint3;
 
+        // if the greencheck function from below turns out to be true in the array too return green
         result += greenCheck(userint1, code[0]);
         result += greenCheck(userint2, code[1]);
         result += greenCheck(userint3, code[2]);
-
+        // calls the yellowCheck function from below turns out to be true in the array return yellow
         result += yellowCheck(userint1, code[1], code[2]);
         result += yellowCheck(userint2, code[0], code[2]);
         result += yellowCheck(userint3, code[0], code[1]);
@@ -43,9 +51,11 @@ int main() {
         if (result == "") {
             result += "red";
         }
-
+        // prints out the results of the checks and adds a attempt to the loop if not all green
         cout << result;
         attempt++;
+
+        // if all the 3 integers in the array are in the right spot print out that they cracked the code and exit the loop
         if (userint1 == code[0] && userint2 == code[1] && userint3 == code[2]) {
             cout << "You cracked the code! In: " << attempt << "attempts " << endl;
             break;
@@ -58,12 +68,16 @@ int main() {
 
     return 0;
 }
-
+// this function makes a random number and puts the random nuber into the array
+// start of function runction this function wants a code[] array to be declared in the function with 3 indexs
 void random(int code[3]) {
 
+    // determines the seed value w a ttime of 0
     srand(time(0));
+    // generates a random number and puts them in index [0] and [1] in the array makes the number 1-9
     code[0] = rand() % 10;
     code[1] = rand() % 10;
+    // makes sure that no index can equal eachother and if one random number equals eachother regenerate it
     while (code[1] == code[0]) {
         code[1] = rand() % 10;
     }
@@ -72,16 +86,19 @@ void random(int code[3]) {
         code[2] = rand() % 10;
     }
 
-}
+} // end of function random()
 
+// this function checks is the array spots are equal to the right spot and if they are return green otherwise return nothing
 
+//start of function greenCheck
 string greenCheck(int userint, int userint1) {
     if (userint == userint1) {
         return "green ";
     }
     return "";
-}
-
+} // end of function greenCheck
+// this function checks if the array spoits are there just not in the same spot as the number and returns yellow otherwise nothing
+// start of function yellowCheck
 string yellowCheck(int userint, int otherint1, int otherint2) {
 
     if (userint == otherint1 || userint == otherint2) {
@@ -89,12 +106,11 @@ string yellowCheck(int userint, int otherint1, int otherint2) {
     }
     return "";
 
-}
-
+} // end of function yellowCheck
+// checks if nothing is equal to eachother in the array and if so return red
 string redCheck(int userint, int otherint1, int otherint2) {
     if (userint != otherint1 && userint != otherint2 && otherint1 != otherint2) {
         return "red";
     }
     return "";
 }
-
