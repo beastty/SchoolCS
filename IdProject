@@ -1,23 +1,191 @@
 #include <iostream>
 using namespace std;
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+void printMenu() {
+    cout << "Student ID Manager Menu" << endl;
+    cout << "1. Insert ID" << endl;
+    cout << "2. Search ID" << endl;
+    cout << "3. Replace ID" << endl;
+    cout << "4. Delete ID" << endl;
+    cout << "5. Display ID's" << endl;
+    cout << "6. Copy to Backup" << endl;
+    cout << "7. Compare with Backup" << endl;
+    cout << "8. Exit" << endl;
+}
+
+void pushID(int idArray[], int &arrayCount, int size);
+void display(int idArray[], int arrayCount);
+int linearSearch(int idArray[], int arrayCount, int id);
+void deleteID(int idArray[], int &arrayCount);
+void replaceID(int idArray[], int &arrayCount);
+void searchID(int idArray[], int arrayCount);
+int backup(int backupID[], int original[]);
+
+
 int main() {
-int idArray[20];
-int arrayCount = 0;
+    int idArray[20];
+    int arrayCount = 0;
     int id;
-    cout << "Please enter your Student ID number" << endl;
-    cin >> id;
-    
-    if (arrayCount < 20) {
-        idArray[arrayCount] = id;
-        arrayCount += 1;       
-    } else {
-        cout << "No more room for new ID's! Blame Jacob ngl"
+    int selection;
+    int backupIDs[20];
+
+    printMenu();
+    cout << "What would you like to do with the ID?" << endl;
+    cin >> selection;
+
+    while (selection != 8) {
+        switch (selection) {
+            case 1: {
+                pushID(idArray, arrayCount, 20);
+            }
+                break;
+            case 2:
+                searchID(idArray, arrayCount);
+                break;
+            case 3:
+                replaceID(idArray, arrayCount);
+                break;
+            case 4:
+                deleteID(idArray, arrayCount);
+                break;
+            case 5:
+                display(idArray, arrayCount);
+                break;
+            case 6:
+                backup(backupIDs, idArray);
+                break;
+            default:
+                cout << "INADFASDF" << endl;
+        }
+
+        printMenu();
+        cout << "What would you like to do with the ID?" << endl;
+        cin >> selection;
+
     }
 
-    
-    
-    
+
+
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
+}
+
+void pushID(int idArray[],  int &arrayCount, int size) {
+    int id;
+
+    cout << "Please enter your student ID number" << endl;
+    cin >> id;
+
+        if (arrayCount < size) {
+            idArray[arrayCount] = id;
+            arrayCount += 1;
+            cout << "You have " << arrayCount << " Id saved" << endl;
+        } else {
+            cout << "No more room for new ID's!";
+        }
+
+}
+
+
+
+
+int linearSearch(int idArray[], int arrayCount, int id) {
+
+    for (int i = 0; i < arrayCount; i++) {
+        if (idArray[i] == id) {
+            return i;
+        }
+
+    } return -1;
+}
+
+
+
+
+void replaceID(int idArray[], int &arrayCount) {
+    int id;
+    int index;
+    int replaced;
+    cout << "What Id what you like to replace" << endl;
+    cin >> id;
+
+    if (index == -1 || arrayCount == 0) {
+        cout << "Error no Id found" << endl;
+        return;
+    }
+
+    cout << "What would you like to replace it with: " << endl;
+    cin >> replaced;
+
+
+
+    index = linearSearch(idArray, arrayCount, id);
+        idArray[index] = replaced;
+
+
+}
+
+void display(int idArray[], int arrayCount) {
+    if (arrayCount == 0) {
+        cout << "No Id's found in the arrays!" << endl;
+    }
+    for (int i = 0; i < arrayCount; i++) {
+        cout << idArray[i] << endl;
+    }
+}
+
+
+void deleteID(int idArray[], int &arrayCount) {
+    int id;
+    int index;
+    cout << "What Id what you like to delete: " << endl;
+    cin >> id;
+    index = linearSearch(idArray, arrayCount, id );
+
+    if (index == -1) {
+        cout << "Error: No Id Found." << endl;
+        return;
+    }
+    for (int i = index; i < arrayCount - 1; i++) {
+        idArray[i] = idArray[i+1];
+
+    }
+    arrayCount--;
+}
+
+void searchID(int idArray[], int arrayCount) {
+    int index;
+    int id;
+    cout << "Enter ID to search for: ";
+    cin >> id;
+
+    index = linearSearch(idArray, arrayCount, id);
+
+    if (index == -1 || arrayCount == 0) {
+        cout << "Error no Id found" << endl;
+        return;
+    }
+
+    cout << "The following id was found: " << id << endl;
+}
+
+
+
+int backup(int backupID[], int original[]) {
+
+
+
+    for (int i = 0; i < 20; i++) {
+        backupID[i] = original[i];
+    }
+    cout << "Backup is complete" << endl;
+
+}
+
+void compare(int backupID[], int original[]) {
+    if (backupID[] = original[] ) {
+        cout << "Arrays are identical" << endl;
+
+    } else {
+        cout << "Arrays are diffrent" << endl;
+    }
 }
