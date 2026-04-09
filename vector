@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int vec();
+int main() {
+
+    vector<int> hard = {10, 20, 30, 40, 50};
+    cout << "You have the following numbers in your basic vector: " << endl;
+
+    for (int n : hard) {
+        cout << n << " ";
+    }
+
+    // start of the second array code
+
+    cout << "Please enter 10 numbers to push into the vector: ";
+    cin << num;
+    return 0;
+
+
+}
+
+
+
+int vec() {
+    int input;
+   vector<int> num;
+    cout << "Please enter 10 numbers to push to the vector: " << endl;
+
+    for (int i = 0; i < 10; i++) {
+
+        cin >> input;
+        num.push_back(input);
+    }
+
+
+    cout << "Vector Numbers: ";
+    for (int n : num) {
+        cout << n << " ";
+
+    }
+    return 0;
+
+
+}
+
+void backup() {
+
+}
