@@ -20,7 +20,7 @@ void deleteID(int idArray[], int &arrayCount);
 void replaceID(int idArray[], int &arrayCount);
 void searchID(int idArray[], int arrayCount);
 int backup(int backupID[], int original[]);
-
+void compare(int backupID[], int original[], int size);
 
 int main() {
     int idArray[20];
@@ -54,8 +54,10 @@ int main() {
             case 6:
                 backup(backupIDs, idArray);
                 break;
+            case 7:
+                compare(backupIDs, idArray, arrayCount);
             default:
-                cout << "INADFASDF" << endl;
+                cout << "Invalid Selection!" << endl;
         }
 
         printMenu();
@@ -165,7 +167,7 @@ void searchID(int idArray[], int arrayCount) {
         return;
     }
 
-    cout << "The following id was found: " << id << endl;
+    cout << "Stored IDs: " << id << endl;
 }
 
 
@@ -181,11 +183,12 @@ int backup(int backupID[], int original[]) {
 
 }
 
-void compare(int backupID[], int original[]) {
-    if (backupID[] = original[] ) {
-        cout << "Arrays are identical" << endl;
-
-    } else {
-        cout << "Arrays are diffrent" << endl;
-    }
+void compare(int backupID[], int original[], int size) {
+   for (int i =0; i < size; i++) {
+       if (backupID[i] != original[i]) {
+           cout << "Array's are diffrent from eachother" << endl;
+           return;
+       }
+   }
+    cout << "Arrays are identical to eachother" << endl;
 }
