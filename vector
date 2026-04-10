@@ -1,12 +1,21 @@
+#include <algorithm>
 #include <iostream>
+#include <numeric>
 #include <vector>
 using namespace std;
 
-int vec();
+vector<int> vec();
 int main() {
 
     vector<int> hard = {10, 20, 30, 40, 50};
-    cout << "You have the following numbers in your basic vector: " << endl;
+    vector<int> sec;
+    vector<int> backup;
+    int sum;
+    double ave;
+    int min = 100000000;
+    int max = 1;
+
+    cout << "\nYou have the following numbers in your basic vector: " << endl;
 
     for (int n : hard) {
         cout << n << " ";
@@ -14,37 +23,87 @@ int main() {
 
     // start of the second array code
 
-    cout << "Please enter 10 numbers to push into the vector: ";
-    cin << num;
-    return 0;
+    sec = vec();
+    cout << "\nVector Numbers: ";
+    for (int n : sec) {
+        cout << n << " ";
 
 
+
+    }
+
+
+    backup = sec;
+    cout << "\nYour arrays are backedup to your second array";
+
+
+    hard.insert(hard.begin() + 3, 35);
+
+    hard.erase(hard.begin());
+    cout << "\nYou're new array is: ";
+
+    for (int n : hard) {
+        cout << n << " ";
+    }
+
+    sum = 0;
+
+
+    for (int n : sec) {
+        if (n < min) {
+            min = n;
+        } else if (n > max) {
+            max = n;
+        }
+        sum += n;
+    }
+    cout << "\nMin: " << min << endl;
+    cout << "Max: " << max << endl;
+    cout << "Sum: " << sum << endl;
+
+    ave = (float)sum / sec.size();
+    cout << "Average: " << ave << endl;
+
+
+    hard.insert(hard.end(), sec.begin(), sec.end());
+    cout << "The 2 joined functions are: ";
+    for (int n : hard) {
+        cout << n << " ";
+    }
+
+return 0;
 }
 
 
 
-int vec() {
+vector<int> vec() {
     int input;
-   vector<int> num;
-    cout << "Please enter 10 numbers to push to the vector: " << endl;
+    vector<int> num;
+    cout << "\nPlease enter 10 numbers to push to the vector: " << endl;
 
     for (int i = 0; i < 10; i++) {
 
         cin >> input;
         num.push_back(input);
-    }
-
-
-    cout << "Vector Numbers: ";
-    for (int n : num) {
-        cout << n << " ";
 
     }
-    return 0;
+
+
+
+    return num;
 
 
 }
 
-void backup() {
+/*
+ Arrays are used with fixed, static memory, meaning their size must be decided at the time they
+ are created and can't be changed afterward. This can become a problem if you underestimate
+ the number of elements that are needed.
+ unlike vectors which use dynamic resizable memory
+ making vectors much more flexible and easier to use especially when the number of elements
+ is not something we know in advanced. When a vector runs out of space into it and frees the old memory
+ all without requiring someone to manulaly handle these steps. Since its fully automaic resizing
+ and memory handling, vectors are so much more flexiable and effecient for situations
+ where the number of elemets may change a lot of is known a lot in advanced
 
-}
+ */
