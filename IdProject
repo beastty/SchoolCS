@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+// prints the student id manager to console so the users can select what they wanna do with the ids
 void printMenu() {
     cout << "Student ID Manager Menu" << endl;
     cout << "1. Insert ID" << endl;
@@ -12,7 +12,7 @@ void printMenu() {
     cout << "7. Compare with Backup" << endl;
     cout << "8. Exit" << endl;
 }
-
+// calls and lets me define the functions from below
 void pushID(int idArray[], int &arrayCount, int size);
 void display(int idArray[], int arrayCount);
 int linearSearch(int idArray[], int arrayCount, int id);
@@ -23,12 +23,13 @@ int backup(int backupID[], int original[]);
 void compare(int backupID[], int original[], int size);
 
 int main() {
+    // declares all the vars and arrays I need for below
     int idArray[20];
     int arrayCount = 0;
     int id;
     int selection;
     int backupIDs[20];
-
+// prints the menu so the users can select that they  wanna do with the ids
     printMenu();
     cout << "What would you like to do with the ID?" << endl;
     cin >> selection;
@@ -60,7 +61,7 @@ int main() {
                 cout << "Invalid Selection!" << endl;
         }
 
-        printMenu();
+        printMenu(); // calls the print menu function from above so it will show it again
         cout << "What would you like to do with the ID?" << endl;
         cin >> selection;
 
@@ -70,18 +71,20 @@ int main() {
 
     return 0;
 }
-
+// wants a idarray and a change in the arraycount 
 void pushID(int idArray[],  int &arrayCount, int size) {
     int id;
 
     cout << "Please enter your student ID number" << endl;
     cin >> id;
-
+// checks to make sure that the array is not bigger then 20 and if it is not it pushes a brand new id
+    // that the user has put in into the array and keeps it saved
         if (arrayCount < size) {
             idArray[arrayCount] = id;
             arrayCount += 1;
             cout << "You have " << arrayCount << " Id saved" << endl;
         } else {
+            // if no room show this
             cout << "No more room for new ID's!";
         }
 
@@ -89,9 +92,9 @@ void pushID(int idArray[],  int &arrayCount, int size) {
 
 
 
-
+// wants to see the idarray to keep everything searched
 int linearSearch(int idArray[], int arrayCount, int id) {
-
+    // lets them check if the id is in the array and if it does returnj the id
     for (int i = 0; i < arrayCount; i++) {
         if (idArray[i] == id) {
             return i;
@@ -102,14 +105,14 @@ int linearSearch(int idArray[], int arrayCount, int id) {
 
 
 
-
+// expects something from the array from above and a change in the arraycount
 void replaceID(int idArray[], int &arrayCount) {
     int id;
     int index;
     int replaced;
     cout << "What Id what you like to replace" << endl;
     cin >> id;
-
+    // if no id is found return nothing
     if (index == -1 || arrayCount == 0) {
         cout << "Error no Id found" << endl;
         return;
@@ -118,7 +121,7 @@ void replaceID(int idArray[], int &arrayCount) {
     cout << "What would you like to replace it with: " << endl;
     cin >> replaced;
 
-
+    // calls the linearsearch from above and if its found replace it with the new id found
 
     index = linearSearch(idArray, arrayCount, id);
         idArray[index] = replaced;
@@ -128,10 +131,12 @@ void replaceID(int idArray[], int &arrayCount) {
 
 void display(int idArray[], int arrayCount) {
     if (arrayCount == 0) {
+        // if no id is found in the array at all send this
         cout << "No Id's found in the arrays!" << endl;
     }
+    // if an id is found in the array print out what ids are in the array to console
     for (int i = 0; i < arrayCount; i++) {
-        cout << idArray[i] << endl;
+        cout << idArray[i] << endl; // prints out the arrays
     }
 }
 
@@ -141,16 +146,19 @@ void deleteID(int idArray[], int &arrayCount) {
     int index;
     cout << "What Id what you like to delete: " << endl;
     cin >> id;
-    index = linearSearch(idArray, arrayCount, id );
+    index = linearSearch(idArray, arrayCount, id ); // calls the linearsearch from above to check if the id is there
 
+    // if id is not found error
     if (index == -1) {
         cout << "Error: No Id Found." << endl;
         return;
     }
+    // if id is found in the array delete that id from the array
     for (int i = index; i < arrayCount - 1; i++) {
         idArray[i] = idArray[i+1];
 
     }
+    // minus one from the array
     arrayCount--;
 }
 
@@ -159,14 +167,14 @@ void searchID(int idArray[], int arrayCount) {
     int id;
     cout << "Enter ID to search for: ";
     cin >> id;
-
+// lets you search the array for a certain id
     index = linearSearch(idArray, arrayCount, id);
 
     if (index == -1 || arrayCount == 0) {
         cout << "Error no Id found" << endl;
         return;
     }
-
+// shows what ids are  found
     cout << "Stored IDs: " << id << endl;
 }
 
@@ -174,7 +182,7 @@ void searchID(int idArray[], int arrayCount) {
 
 int backup(int backupID[], int original[]) {
 
-
+    // checks the whole array and backups everything into the other array
 
     for (int i = 0; i < 20; i++) {
         backupID[i] = original[i];
@@ -182,10 +190,10 @@ int backup(int backupID[], int original[]) {
     cout << "Backup is complete" << endl;
 
 }
-
+// compares if all the indexes in both the 2 arrays are equal to eachother
 void compare(int backupID[], int original[], int size) {
    for (int i =0; i < size; i++) {
-       if (backupID[i] != original[i]) {
+       if (backupID[i] != original[i]) { // checks if its not equal to eachothers array
            cout << "Array's are diffrent from eachother" << endl;
            return;
        }
