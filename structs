@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+// makes a struct called Student and calls for a string called name a int called age and a double called average
+// this is to make a student information profile
 struct Student {
 
     string name;
@@ -12,7 +13,7 @@ struct Student {
 int main() {
 
 
-
+// makes this equal to the struct above so I can call the stuff from that and manually input them into  the stuff below
 Student student;
     student.name = "Alex";
     student.age = 16;
@@ -22,9 +23,9 @@ Student student;
     cout << "Age: " << student.age << endl;
     cout << "Average: " << student.average << endl;
 
-
+// makes a vector called students
 vector<Student> students;
-
+// looops until they have put in 3 student information
     for (int i = 0; i < 3; i++) {
         Student student;
         cout << "Please enter Student information!" << endl;
@@ -34,6 +35,7 @@ vector<Student> students;
         cin >> student.age;
         cout << "\nAverage: ";
         cin >> student.average;
+        // pushes all this information to the vector called student
         students.push_back(student);
     }
 
