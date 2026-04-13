@@ -4,27 +4,32 @@
 #include <vector>
 using namespace std;
 
+// calls the function vec from below
 vector<int> vec();
 int main() {
-
+    // hard codes a vector with 5 indexes all going up by 10
     vector<int> hard = {10, 20, 30, 40, 50};
+// called this vector sec since its the one for user input into the vector
     vector<int> sec;
+// backup for backup vector
     vector<int> backup;
     int sum;
     double ave;
-    int min = 100000000;
-    int max = 1;
+    int min = 100000000; // set the min high so when i do the loop it will go lower till it finds the minumum value
+    int max = 1; // opposite of above
 
     cout << "\nYou have the following numbers in your basic vector: " << endl;
-
+// lets me print the vector called hard into console
     for (int n : hard) {
         cout << n << " ";
     }
 
     // start of the second array code
 
+    // makes the second vector = to the function from below
     sec = vec();
     cout << "\nVector Numbers: ";
+    // prints of the function sec
     for (int n : sec) {
         cout << n << " ";
 
@@ -32,23 +37,23 @@ int main() {
 
     }
 
-
+    // makes the backup vector go into the sec vector
     backup = sec;
     cout << "\nYour arrays are backedup to your second array";
 
-
+    // makes a new index at index 3
     hard.insert(hard.begin() + 3, 35);
-
+// erases the old index at index 3
     hard.erase(hard.begin());
     cout << "\nYou're new array is: ";
-
+    // prints of hard vector
     for (int n : hard) {
         cout << n << " ";
     }
 
     sum = 0;
 
-
+    // these are the for loops to check what is the minimum and what is the maximum
     for (int n : sec) {
         if (n < min) {
             min = n;
@@ -60,41 +65,40 @@ int main() {
     cout << "\nMin: " << min << endl;
     cout << "Max: " << max << endl;
     cout << "Sum: " << sum << endl;
-
+    // makes the average = to a float of the sum so i can have more decimal points
     ave = (float)sum / sec.size();
     cout << "Average: " << ave << endl;
 
-
+// inserts the first hard vector at the beginging and end combines them
     hard.insert(hard.end(), sec.begin(), sec.end());
     cout << "The 2 joined functions are: ";
-    for (int n : hard) {
+    for (int n : hard) { // prints the new vector
         cout << n << " ";
     }
 
-return 0;
+    return 0;
 }
 
 
 
 vector<int> vec() {
     int input;
-    vector<int> num;
+    vector<int> num; // makes a vector called num
     cout << "\nPlease enter 10 numbers to push to the vector: " << endl;
 
     for (int i = 0; i < 10; i++) {
 
         cin >> input;
-        num.push_back(input);
+        num.push_back(input); // pushs the numbers into the vector
 
     }
 
 
-
+// returns a number for above
     return num;
 
 
 }
-
 /*
  Arrays are used with fixed, static memory, meaning their size must be decided at the time they
  are created and can't be changed afterward. This can become a problem if you underestimate
