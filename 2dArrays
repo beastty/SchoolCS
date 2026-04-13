@@ -1,0 +1,112 @@
+#include <iostream>
+using namespace std;
+void printChart(int seating[5][6]);
+void findStudent(int seating[5][6], int id);
+void swapSeats(int seating[5][6], int id1, int id2);
+int main() {
+
+    // declares the 2d array with 5 rows and 6 columns
+    int seatingChart[5][6];
+
+    // Starting student ID
+    int currentID = 101;
+
+    // filling the 2 array sections with a nestted loop
+    // the first loop loops through the rows 0-4
+    for (int row=0; row < 5; row++) {
+
+        // looops through each seat in the rows 0-5
+        for (int col=0; col < 6; col++) {
+            seatingChart[row][col] = currentID;
+            currentID++; // IIncrement the ID for the next seat
+        }
+    }
+
+    printChart(seatingChart);// calls the function and passes the array into it
+
+    // searching code
+    cout << "\nSearching for student..." << endl;
+    findStudent(seatingChart, 115);
+
+    // swap code
+    cout << "Swapping student 105 and 125" << endl;
+    swapSeats(seatingChart, 105, 125);
+    return 0;
+}
+// wants the parements so I can access the array from above
+void printChart(int seating[5][6]) {
+    cout << "Seating Chart: " << endl;
+// loops through the rows
+    for (int i = 0; i < 5; i++) {
+        // loops through each desk
+        for (int j = 0; j < 6; j++) {
+            cout << seating[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+//  function to find a students seating place
+void findStudent(int seating[5][6], int id) {
+    bool found = false; // set to false auto until  we find it
+
+    for (int r = 0; r < 5; r++) {
+        for (int c =0; c < 6; c++) {
+
+            if (seating[r][c] == id) {
+                cout << "Student: " << id << " found at Row" << (r+1) << "Column" << (c+1) << endl; // added the +1 parts because the arrays
+                // start at 0
+                found = true;
+                break; // sets the found to be true since we found and breaks out of the loop
+
+
+            }
+        }
+        if (found) {
+            break;
+        }
+
+
+    }
+    if (!found) {
+        cout << "Error: Student ID: " << id << " not found" << endl;
+
+    }
+}
+
+// Function to swap two students using their ids
+// wants the array from above and needs 2 ids to swap
+void swapSeats(int seating[5][6], int id1, int id2) {
+    // Vars to store the coordinates of both students
+    int r1 = -1;
+    int c1 = -1;
+    int r2 = -1;
+    int c2 = -1;
+
+    // the loops scans everything to try to find the positions of both IDs
+
+    for (int r =0; r < 5; r++) {
+        for (int c =0; c < 6; c++) {
+            if (seating[r][c] == id1) {
+                r1 = r;
+                c1 = c;
+            }
+            if (seating[r][c] == id2) {
+                r2 = r;
+                c2 = c;
+            }
+        }
+    }
+
+    // only swaps seats if both students are found
+    if (r1 != -1 && r2 != -1) {
+        // uses a temp var to not lose the first students ids
+        int temp = seating[r1][c1];
+        seating[r1][c1] = seating[r2][c2];
+        seating[r2][c2] = temp;
+
+        cout << "Swap succesfull!" << endl;
+        printChart(seating);
+    } else {
+        cout << "Swap failed: One or both Student ids are invalid." << endl;
+    }
+}
